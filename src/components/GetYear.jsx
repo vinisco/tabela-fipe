@@ -7,7 +7,7 @@ export default function GetBrand() {
 
   return (
     <>
-      <div className="dropdown">
+      <div className="dropdown m-2 ">
         <button
           className="btn btn-secondary dropdown-toggle"
           type="button"

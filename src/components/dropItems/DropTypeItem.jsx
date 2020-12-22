@@ -9,6 +9,7 @@ export default function DropTypeItem({ name }) {
     setYear,
     setDataModel,
     setDataYear,
+    setDataResult,
   } = useParamsContext();
 
   function handleSetVehicleType() {
@@ -18,6 +19,7 @@ export default function DropTypeItem({ name }) {
     setYear({ nome: "Ano do Veículo", codigo: "" });
     setDataModel([]);
     setDataYear([]);
+    setDataResult([]);
   }
 
   return (

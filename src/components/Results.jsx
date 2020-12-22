@@ -3,12 +3,11 @@ import { useParamsContext } from "../context/ParamsProvider";
 
 export default function Results() {
   const { dataResult, type } = useParamsContext();
-  console.log(dataResult);
 
   return (
     <>
       {dataResult.Modelo ? (
-        <div className="card text-center">
+        <div style={{ maxWidth: "18rem" }} className="card text-center mx-auto">
           <div className="card-body">
             <h5 className="card-title">
               {type.nome}: {dataResult.Marca}
@@ -19,6 +18,8 @@ export default function Results() {
               <strong>Valor: {dataResult.Valor}</strong>
             </h5>
             <a
+              target="_blank"
+              rel="noreferrer"
               href={`https://www.google.com/search?q=${dataResult.Modelo}+${dataResult.Marca}+${dataResult.AnoModelo}&tbm=isch`}
               className="btn btn-primary"
             >
@@ -26,7 +27,7 @@ export default function Results() {
             </a>
           </div>
           <div className="card-footer text-muted">
-            {dataResult.MesReferencia}
+            Referência: {dataResult.MesReferencia}
           </div>
         </div>
       ) : (

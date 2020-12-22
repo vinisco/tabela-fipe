@@ -2,7 +2,7 @@ import React from "react";
 import { useParamsContext } from "../../context/ParamsProvider";
 
 export default function DropBrandItem() {
-  const { setBrand, dataBrand, setModel } = useParamsContext();
+  const { setBrand, dataBrand, setModel, setDataResult } = useParamsContext();
 
   return (
     <>
@@ -11,6 +11,7 @@ export default function DropBrandItem() {
             function handleSetVehicleType() {
               setBrand({ nome, codigo });
               setModel({ nome: "Modelo do Veículo", codigo: "" });
+              setDataResult([]);
             }
             return (
               <span
