@@ -3,24 +3,23 @@ import DropBrandItem from "./dropItems/DropBrandItem";
 import { useParamsContext } from "../context/ParamsProvider";
 
 export default function GetBrand() {
-  const { brand } = useParamsContext();
+  const { setBrand, setModel, setDataResult } = useParamsContext();
+
+  function handleSetVehicleType(name) {
+    setBrand({ nome: name, codigo: name });
+    setModel({ nome: "Modelo do Veículo", codigo: "" });
+    setDataResult([]);
+  }
 
   return (
     <>
       <div className="dropdown m-2">
-        <button
-          className="btn btn-secondary dropdown-toggle"
-          type="button"
-          id="dropdownMenuButton"
-          data-toggle="dropdown"
-          aria-haspopup="true"
-          aria-expanded="false"
+        <select
+          className="btn btn-secondary dropdown-toggle w-50"
+          onChange={(e) => handleSetVehicleType(e.target.value)}
         >
-          {brand.nome}
-        </button>
-        <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
           <DropBrandItem />
-        </div>
+        </select>
       </div>
     </>
   );

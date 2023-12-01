@@ -3,24 +3,21 @@ import DropYearItem from "./dropItems/DropYearItem";
 import { useParamsContext } from "../context/ParamsProvider";
 
 export default function GetBrand() {
-  const { year } = useParamsContext();
+  const { setYear } = useParamsContext();
+
+  function handleSetVehicleType(name) {
+    setYear({ nome: name, codigo: name });
+  }
 
   return (
     <>
       <div className="dropdown m-2 ">
-        <button
-          className="btn btn-secondary dropdown-toggle"
-          type="button"
-          id="dropdownMenuButton"
-          data-toggle="dropdown"
-          aria-haspopup="true"
-          aria-expanded="false"
+        <select
+          onChange={(e) => handleSetVehicleType(e.target.value)}
+          className="btn btn-secondary dropdown-toggle w-50"
         >
-          {year.nome}
-        </button>
-        <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
           <DropYearItem />
-        </div>
+        </select>
       </div>
     </>
   );

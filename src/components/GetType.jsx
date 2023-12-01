@@ -3,26 +3,37 @@ import DropTypeItem from "./dropItems/DropTypeItem";
 import { useParamsContext } from "../context/ParamsProvider";
 
 export default function GetType() {
-  const { type } = useParamsContext();
+  const {
+    setType,
+    setBrand,
+    setModel,
+    setYear,
+    setDataModel,
+    setDataYear,
+    setDataResult,
+  } = useParamsContext();
+
+  function handleSetVehicleType(name) {
+    setType({ apiName: name });
+    setBrand({ nome: "Marca do Veículo", codigo: "" });
+    setModel({ nome: "Modelo do Veículo", codigo: "" });
+    setYear({ nome: "Ano do Veículo", codigo: "" });
+    setDataModel([]);
+    setDataYear([]);
+    setDataResult([]);
+  }
 
   return (
     <>
-      <div className="dropdown m-2 ">
-        <button
-          className="btn btn-secondary dropdown-toggle"
-          type="button"
-          id="dropdownMenuButton"
-          data-toggle="dropdown"
-          aria-haspopup="true"
-          aria-expanded="false"
+      <div className="dropdown m-2">
+        <select
+          className="btn btn-secondary dropdown-toggle w-50"
+          onChange={(e) => handleSetVehicleType(e.target.value)}
         >
-          {type.nome}
-        </button>
-        <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
           <DropTypeItem name={{ nome: "Moto", apiName: "motos" }} />
           <DropTypeItem name={{ nome: "Carro", apiName: "carros" }} />
           <DropTypeItem name={{ nome: "Caminhão", apiName: "caminhoes" }} />
-        </div>
+        </select>
       </div>
     </>
   );

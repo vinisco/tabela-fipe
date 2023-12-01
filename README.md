@@ -35,3 +35,7 @@ Dentro do dirétorio do projeto executar o comando para iniciar o projeto:
 ```shell
 yarn start
 ```
+
+## Preview
+
+![Alt text](image.png)
